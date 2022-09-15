@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="taskboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="container" >
+        <div class="column">
+            <h1 id="h1">All Tasks</h1>
+            <div class="item" draggable="true" id="w" ><div class="itemblock">Wash Clothes</div></div>
+            <div class="item"  draggable="true" id="m"><div class="itemblock">Meeting at 9AM</div></div>
+            <div class="item"  draggable="true" id="f"><div class="itemblock">Fix workshop</div></div>
+            <div class="item" draggable="true" id="v"><div class="itemblock">Visit the zoo</div></div>
+        </div>
+        <div class="column">
+            <h1 id="h1">In progress</h1>
+            
+            <div id="itemBlue" class="hidden"><div class="itemBlue"></div></div>
+        </div>
+        <div class="column" >
+            <h1 id="h1">Paused</h1>
+        </div>
+        <div class="column">
+            <h1 id="h1">Under Review</h1>
+        </div>
+        <div class="column">
+            <h1>Completed</h1>
+        </div>
+    </div>
+    <!-- <script src="main.js"></script> -->
+    <script src="taskboard.js"></script>
+</body>
+</html>
