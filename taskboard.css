@@ -41,8 +41,10 @@
     border-radius: 3px;
     cursor: pointer;
 }
+.invisible{ padding:5px 20px; }
 .invisible>.itemblock{
-    opacity: 0;
+    border:1px solid blue;
+    opacity: .5;
     /* visibility: hidden;  */
 
 }
