@@ -9,7 +9,7 @@
     
     flex-basis: 20%;
     background: #ddd;
-    min-height: 20vh;
+    min-height: 40px;
     border-radius: 10px;
 }
 .column h1{
@@ -31,9 +31,11 @@
 }
 .itemblock{    
     background: #fff;
-    padding:20px;
+    padding:1px;
     border-radius: 3px;
     transition:  .001s;
+    display: flex;
+    flex-direction: row;
 }
 .itemBlue{
     background: blue;
@@ -52,3 +54,10 @@
 .hidden{
     display: none;
 }
+body>img{
+    
+    width: 100px;
+
+}
+
+
