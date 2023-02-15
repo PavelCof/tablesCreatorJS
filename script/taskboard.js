@@ -19,7 +19,6 @@ class Taskboard{
             column.addEventListener('drop', this.dragDrop);
         });
     }
-  
 
      dragOver(e) {
 
@@ -27,16 +26,7 @@ class Taskboard{
 
         if(this.className=="column"){
 
-             let activeElement = container.querySelector(`.invisible`);
-            // this.append(activeElement);
-
-            // // activeElement.style.position="absolute"
-            // // let pos = activeElement.getBoundingClientRect()
-            // // activeElement.style.left=pos.x+"px"
-            // // activeElement.style.top=pos.y+"px"
-           
-            // // console.log(pos);
-
+            let activeElement = container.querySelector(`.invisible`);
             let currentElement = e.target;
             let currentElementCoord = currentElement.getBoundingClientRect();
             let currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
@@ -72,21 +62,7 @@ class Taskboard{
         let el =e.target
         self.dragItem = this;
         this.className="invisible"
- 
-            // container.addEventListener('mousemove', (e) => {
-            //     console.log(1);
-            //     if(this.className=="invisible"){
-            //         console.log(2);
-            //         this.style.left=e.screenX
-            //         this.style.top=e.screenY
     
-            //         // $(cur).css({'position':'fixed','left':e.screenX-120,'top':e.screenY-120,'margin':0});
-    
-            //     }
-    
-          //  });
-        
-       
     }
     
      dragEnd(e) {

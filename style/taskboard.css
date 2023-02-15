@@ -3,12 +3,13 @@
     font-family: "Trebuchet MS", sans-serif;
     display: flex;
     gap: 3px;
+    flex-direction: column;
 }
 .column{
     
     flex-basis: 20%;
     background: #ddd;
-    min-height: 90vh;
+    min-height: 20vh;
     border-radius: 10px;
 }
 .column h1{
