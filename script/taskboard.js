@@ -1,5 +1,6 @@
 class Taskboard{
     constructor(){
+        console.log(this);
         const self =this
         self.dragItem = null;
 
@@ -25,7 +26,7 @@ class Taskboard{
         e.preventDefault()
 
         if(this.className=="column"){
-
+          
             let activeElement = container.querySelector(`.invisible`);
             let currentElement = e.target;
             let currentElementCoord = currentElement.getBoundingClientRect();
@@ -33,9 +34,15 @@ class Taskboard{
             let nextElement = ((e.clientY < currentElementCenter) ?
             currentElement :
             currentElement.nextElementSibling)||null
-
-            if(!nextElement||nextElement.className=="itemblock"||nextElement.className=="itemBlue" ){
+         
+            if(!nextElement||nextElement.className=="itemblock"||nextElement.className=="itemBlue"){
                 nextElement =currentElement.parentNode
+            }else if(nextElement.parentNode.className=="item"){
+                nextElement =currentElement.parentNode
+            }else if(nextElement.parentNode.parentNode.className=="item"){
+                nextElement =currentElement.parentNode.parentNode
+            }else if(nextElement.parentNode.parentNode.parentNode.className=="item"){
+                nextElement =currentElement.parentNode.parentNode.parentNode
             }
         
            if(nextElement.classList.contains("itemBlue")||nextElement.classList.contains("invisible")||nextElement.classList.contains("item")){
@@ -51,6 +58,8 @@ class Taskboard{
            }
 
                 itemBlue.classList.remove("hidden")
+        }else{
+            console.log(this.className);
         }
 
         
@@ -70,6 +79,12 @@ class Taskboard{
           itemBlue.classList.add("hidden")
           
           this.className="item"
+          container.querySelectorAll(".column").forEach(i=>{
+    
+            if(i.innerHTML.trim()==""){
+                i.remove()
+            }
+          })
     }
     
      dragDrop(e) {

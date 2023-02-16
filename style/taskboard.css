@@ -11,6 +11,7 @@
     background: #ddd;
     min-height: 40px;
     border-radius: 10px;
+    border-bottom: 1px solid rgba(208, 206, 206, 0.8);
 }
 .column h1{
     text-align: center;
@@ -28,6 +29,9 @@
     opacity: 1;
     display:block;
     position: relative;
+    background: white;
+    margin: 0px 3px;
+
 }
 .itemblock{    
     background: #fff;
@@ -54,10 +58,15 @@
 .hidden{
     display: none;
 }
-body>img{
+#Hmenu>img{
     
     width: 100px;
 
 }
 
+
+.maxw294 {
+    justify-content: flex-start;
+    max-width: 294px;
+}
 
