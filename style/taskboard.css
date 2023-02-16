@@ -59,11 +59,13 @@
     display: none;
 }
 #Hmenu>img{
-    
+    margin: 20px;
     width: 100px;
 
 }
-
+h1{
+    margin: 20px;
+}
 
 .maxw294 {
     justify-content: flex-start;
