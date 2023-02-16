@@ -44,16 +44,17 @@ class Taskboard{
             }else if(nextElement.parentNode.parentNode.parentNode.className=="item"){
                 nextElement =currentElement.parentNode.parentNode.parentNode
             }else{
-                nextElement =""
+               console.log(currentElement);
+                nextElement =currentElement
                 
             }
         
            if(nextElement.classList.contains("itemBlue")||nextElement.classList.contains("invisible")||nextElement.classList.contains("item")){
                 this.insertBefore(itemBlue, nextElement);
-           }else if("column"){
+           }else if(nextElement.classList.contains("column")){
       
             this.append(itemBlue);
-           }else if(""){
+           }else if(nextElement.classList.contains("")){
             this.prepend(itemBlue);
            }
            else{
@@ -62,20 +63,29 @@ class Taskboard{
 
                 itemBlue.classList.remove("hidden")
         }else{
-            console.log(this.className);
+            this.append(itemBlue);
+            itemBlue.classList.remove("hidden")
         }
 
         
       }
-    
-  
-    
-     dragStart(e) {
+      dragStart(e) {
         let el =e.target
         self.dragItem = this;
         this.className="invisible"
     
     }
+      dragDrop(e) {
+        e.preventDefault()
+
+                let activeElement = container.querySelector(`.invisible`);
+                let nextElement = itemBlue
+                console.log(activeElement, nextElement);
+              
+                itemBlue.parentNode.insertBefore(activeElement, nextElement);
+        }
+    
+
     
      dragEnd(e) {
           self.dragItem = null;
@@ -90,18 +100,19 @@ class Taskboard{
           })
     }
     
-     dragDrop(e) {
-        e.preventDefault()
-                let activeElement = container.querySelector(`.invisible`);
-                let nextElement = itemBlue
-                itemBlue.parentNode.insertBefore(activeElement, nextElement);
-    }
+
     
      dragEnter(e) {
    
     }
      dragLeave(e) {
-    
+            e.preventDefault()
+                
+                let activeElement = container.querySelector(`.invisible`);
+                let nextElement = itemBlue
+                console.log(activeElement, nextElement);
+              
+                itemBlue.parentNode.insertBefore(activeElement, nextElement);
     }
     
 
