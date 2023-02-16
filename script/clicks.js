@@ -9,7 +9,9 @@ document.addEventListener("click",function (e) {
             <div class="item" draggable="true"  id="item_${hpluseId}" >
                 
                 <div class="itemblock tr " >
-                    <div class="td f3 move ofNotHidden"><div class="moveLeft" ><img src="himgs/icotoCenter1.svg"></div> <input type="text" name="name" value="" autocomplete="off">  </div>
+                    <div class="td f3 move ofNotHidden"><div class="moveLeft" >
+                    <div class="leftToInp"></div>
+                    </div> <input type="text" name="name" value="" autocomplete="off">  </div>
                     <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
                     <div class="td f3">
                             <select name="ctype" list="columnTypes" class="columnTypes">
@@ -30,7 +32,8 @@ document.addEventListener("click",function (e) {
             <div class="item" draggable="true" id="new" id="item_${hpluseId}" >    
                 <div class="itemblock tr " >
                     <div class="td f3 move ofNotHidden"><input type="text" name="name" value="" autocomplete="off">  </div>
-                    <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
+                    <div class="rollUpHeadre">
+                    <img src="himgs/icorollUp.svg" class="rollUp" id="rollUp_${hpluseId}"></div>
                     <div class="td f3"></div>
                     <div class="td f2 minw175 padL7"></div>
                     <div class="td f2"></div>
@@ -43,7 +46,9 @@ document.addEventListener("click",function (e) {
     let templetHButton=`
     <div class="item" draggable="true" id="new" id="item_${hpluseId}" >    
         <div class="itemblock tr " >
-            <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft " ><img src="himgs/icoToButton1.svg"></div> <buttin class="bgbutton">Добавить еще столбец</button>  </div>
+            <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft " >
+            <div class="leftToBut"></div>
+            </div> <buttin class="bgbutton">Добавить еще столбец</button>  </div>
             <div class="pluseHeadre"></div>
             <div class="td f3"></div>
             <div class="td f2 minw175 padL7"></div>
