@@ -1,3 +1,13 @@
+
+
+document.addEventListener("DOMContentLoaded",function name(params) {
+
+    showLoader()
+
+    hideLoader()
+})
+
+
 function idGenInt(min=5, max=10000000000000) {
 
     return Math.floor(Math.random() * (max - min + 1) ) + min;
