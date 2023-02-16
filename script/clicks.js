@@ -6,7 +6,7 @@ document.addEventListener("click",function (e) {
     let el =e.target
     let hpluseId=idGenInt()
     let templet = `
-    <div class="item" draggable="true" id="new" id="item_${hpluseId}" >
+    <div class="item" draggable="true"  id="item_${hpluseId}" >
         
         <div class="itemblock tr " >
             <div class="td f3 move"> <input type="text" name="name" value="" autocomplete="off">  </div>
