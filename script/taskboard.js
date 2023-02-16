@@ -110,9 +110,9 @@ class Taskboard{
                 
                 let activeElement = container.querySelector(`.invisible`);
                 let nextElement = itemBlue
-                console.log(activeElement, nextElement);
+                // console.log(activeElement, nextElement);
               
-                itemBlue.parentNode.insertBefore(activeElement, nextElement);
+                 itemBlue.parentNode.insertBefore(activeElement, nextElement);
     }
     
 

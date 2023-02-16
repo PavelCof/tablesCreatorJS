@@ -70,3 +70,27 @@
     max-width: 294px;
 }
 
+.ofNotHidden{
+    overflow: unset !important;
+}
+
+.moveLeft{
+    position: relative;
+    width: 30px;
+}
+
+.moveLeft img{
+    position: absolute;
+    top: -73px;
+    right: -5px;
+}
+
+.moveNoImg{
+   
+    padding-left: 6px;
+    background-repeat: no-repeat;
+    background-position: -2px;
+    z-index: 1;
+ 
+}
+
