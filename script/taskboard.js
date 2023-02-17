@@ -43,11 +43,12 @@ class Taskboard{
                 nextElement =currentElement.parentNode.parentNode
             }else if(nextElement.parentNode.parentNode.parentNode.className=="item"){
                 nextElement =currentElement.parentNode.parentNode.parentNode
-            }else{
-               console.log(currentElement);
-                nextElement =currentElement
-                
             }
+            // else{
+            //    console.log(currentElement);
+            //     nextElement =currentElement
+                
+            // }
         
            if(nextElement.classList.contains("itemBlue")||nextElement.classList.contains("invisible")||nextElement.classList.contains("item")){
                 this.insertBefore(itemBlue, nextElement);
