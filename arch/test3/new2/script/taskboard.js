@@ -35,15 +35,15 @@ class Taskboard{
             currentElement :
             currentElement.nextElementSibling)||null
          
-            if(!nextElement||nextElement.className=="itemblock"||nextElement.className=="itemBlue"){
-                nextElement =currentElement.parentNode
-            }else if(nextElement.parentNode.className=="item"){
-                nextElement =currentElement.parentNode
-            }else if(nextElement.parentNode.parentNode.className=="item"){
-                nextElement =currentElement.parentNode.parentNode
-            }else if(nextElement.parentNode.parentNode.parentNode.className=="item"){
-                nextElement =currentElement.parentNode.parentNode.parentNode
-            }
+            // if(!nextElement||nextElement.className=="itemblock"||nextElement.className=="itemBlue"){
+            //     nextElement =currentElement.parentNode
+            // }else if(nextElement.parentNode.className=="item"){
+            //     nextElement =currentElement.parentNode
+            // }else if(nextElement.parentNode.parentNode.className=="item"){
+            //     nextElement =currentElement.parentNode.parentNode
+            // }else if(nextElement.parentNode.parentNode.parentNode.className=="item"){
+            //     nextElement =currentElement.parentNode.parentNode.parentNode
+            // }
             // else{
             //    console.log(currentElement);
             //     nextElement =currentElement
@@ -109,11 +109,11 @@ class Taskboard{
      dragLeave(e) {
             e.preventDefault()
                 
-                let activeElement = container.querySelector(`.invisible`);
-                let nextElement = itemBlue
-                // console.log(activeElement, nextElement);
+                // let activeElement = container.querySelector(`.invisible`);
+                // let nextElement = itemBlue
+             
               
-                 itemBlue.parentNode.insertBefore(activeElement, nextElement);
+                //  itemBlue.parentNode.insertBefore(activeElement, nextElement);
     }
     
 

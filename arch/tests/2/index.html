@@ -1,0 +1,86 @@
+<div class="file-list">
+    <div class="file" draggable="true">
+      <span class="file-icon">📄</span>
+      <span class="file-name">file1.txt</span>
+    </div>
+    <div class="file" draggable="true">
+      <span class="file-icon">📄</span>
+      <span class="file-name">file2.txt</span>
+    </div>
+    <div class="file" draggable="true">
+      <span class="file-icon">📁</span>
+      <span class="file-name">folder1</span>
+      <div class="file-list">
+        <div class="file" draggable="true">
+          <span class="file-icon">📄</span>
+          <span class="file-name">file3.txt</span>
+        </div>
+        <div class="file" draggable="true">
+          <span class="file-icon">📄</span>
+          <span class="file-name">file4.txt</span>
+        </div>
+      </div>
+    </div>
+    <div class="file" draggable="true">
+      <span class="file-icon">📁</span>
+      <span class="file-name">folder2</span>
+        <div class="file-list">
+            <div class="file"></div>
+        </div>  
+    </div>
+</div>
+    <script>
+      const files = document.querySelectorAll('.file');
+    
+      let draggedFile = null;
+    
+      files.forEach(file => {
+        file.addEventListener('dragstart', () => {
+          draggedFile = file;
+          setTimeout(() => {
+            file.classList.add('dragging');
+          }, 0);
+        });
+    
+        file.addEventListener('dragend', () => {
+          draggedFile.classList.remove('dragging');
+          draggedFile = null;
+        });
+    
+        file.addEventListener('click', () => {
+          const fileList = file.querySelector('.file-list');
+          if (fileList) {
+            fileList.classList.toggle('hidden');
+          }
+        });
+      });
+    
+      const fileLists = document.querySelectorAll('.file-list');
+    
+      fileLists.forEach(fileList => {
+        fileList.addEventListener('dragover', event => {
+          event.preventDefault();
+          const afterElement = getDragAfterElement(fileList, event.clientY);
+          const file = document.querySelector('.dragging');
+          if (afterElement == null) {
+            fileList.appendChild(file);
+          } else {
+            fileList.insertBefore(file, afterElement);
+          }
+        });
+      });
+    
+      function getDragAfterElement(container, y) {
+        const fileElements = [...container.querySelectorAll('.file:not(.dragging)')];
+        return fileElements.reduce((closest, child) => {
+          const box = child.getBoundingClientRect();
+          const offset = y - box.top - box.height / 2;
+          if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+          } else {
+            return closest;
+          }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+      }
+    </script>
+      

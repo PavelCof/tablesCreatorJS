@@ -48,11 +48,11 @@
     border-radius: 3px;
     cursor: pointer;
 }
-.drag-enter{    border:1px solid blue;}
 .invisible{ padding:5px 20px; }
 .invisible>.itemblock{
     border:1px solid blue;
-    opacity: .5;
+    opacity: .1;
+    height: 1px;
     /* visibility: hidden;  */
 
 }
@@ -124,12 +124,3 @@ h1{
  
 }
 
-.trH {
-    display: flex;
-    flex-direction: row;
-    min-height: 50px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-}

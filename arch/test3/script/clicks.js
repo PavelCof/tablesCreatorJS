@@ -1,11 +1,11 @@
 
 
-document.addEventListener("DOMContentLoaded",function name(params) {
+// document.addEventListener("DOMContentLoaded",function name(params) {
 
-    showLoader()
+//     showLoader()
 
-    hideLoader()
-})
+//     hideLoader()
+// })
 
 
 function idGenInt(min=5, max=10000000000000) {
