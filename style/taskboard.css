@@ -33,6 +33,16 @@
     margin: 0px 3px;
 
 }
+.itemButtons{
+    padding:5px 20px;
+    cursor: pointer;
+    opacity: 1;
+    display:block;
+    position: relative;
+    background: white;
+    margin: 0px 3px;
+
+}
 .itemblock{    
     background: #fff;
     padding:1px;

@@ -76,7 +76,7 @@
                     </div>
                 
                 </div>
-                <div class="item" draggable="true" id="new1">    
+                <div class="itemButtons"  id="new1">    
                     <div class="itemblock tr ">
                         <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft ">
                         <div class="leftToBut"></div>
@@ -159,7 +159,7 @@
                     </div>
                 
                 </div>
-                <div class="item" draggable="true" id="new3">    
+                <div class="itemButtons"   id="new3">    
                     <div class="itemblock tr ">
                         <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft ">
                         <div class="leftToBut"></div>
@@ -182,30 +182,34 @@
 
 <script>
         let moveElementID=""
-        const draggableElements = document.querySelectorAll('.item[draggable="true"]');
+        let draggableElements = document.querySelectorAll('.item[draggable="true"]');
 
-        draggableElements.forEach(elem => {
-            elem.addEventListener('dragstart', dragStart);
-            elem.addEventListener('dragend', dragEnd);
-        });
 
-        const containers = document.querySelectorAll('.column');
-            containers.forEach(container => {
-            container.addEventListener('dragover', dragOver);
-        });
+        function initMoves() {
+            moveElementID=""
+            draggableElements = document.querySelectorAll('.item[draggable="true"]');
 
-        containers.forEach(container => {
-            container.addEventListener('dragenter', dragEnter);
-            container.addEventListener('dragleave', dragLeave);
-        });
+                draggableElements.forEach(elem => {
+                    elem.addEventListener('dragstart', dragStart);
+                    elem.addEventListener('dragend', dragEnd);
+                });
 
-        containers.forEach(container => {
-            container.addEventListener('drop', dragDrop);
-        });
+                const containers = document.querySelectorAll('.column');
+                containers.forEach(container => {
+                    container.addEventListener('dragover', dragOver);
+                });
 
+                containers.forEach(container => {
+                    container.addEventListener('dragenter', dragEnter);
+                    container.addEventListener('dragleave', dragLeave);
+                });
+
+                containers.forEach(container => {
+                    container.addEventListener('drop', dragDrop);
+                });
+        }
         function dragStart(event) {
             event.dataTransfer.setData('text/plain', event.target.id);
-            console.log(event.target.id);
             moveElementID=event.target.id
 
         }
@@ -249,7 +253,7 @@
                 for (let index = 0; index < 20; index++) {
                     finalEl=finalEl.parentNode
          
-                    if(finalEl.classList.contains('item')){
+                    if(finalEl.classList.contains('item')||finalEl.classList.contains('trH')){ // 
                        
                         break;
                     }
@@ -259,8 +263,12 @@
       
             if (finalEl.parentNode.classList.contains('column')) {
 
-            
-                finalEl.insertAdjacentElement('afterend', itemBlue);
+                if(finalEl.classList.contains('itemButtons')){
+                    finalEl.insertAdjacentElement('beforebegin', itemBlue);
+                }else{
+                    finalEl.insertAdjacentElement('afterend', itemBlue);
+                }
+              
                 itemBlue.classList.remove("hidden")
            
             }
@@ -293,6 +301,8 @@
                     draggableElement.classList.remove('dragging');
                // }
         }
+
+        initMoves()
         </script>
 </body>
 </html>
