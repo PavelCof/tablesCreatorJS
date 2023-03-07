@@ -129,13 +129,13 @@ document.addEventListener("click",function (e) {
         container.append(div)
 
         initMoves()
-        window.scrollTo(0, document.body.scrollHeight);
+      //  window.scrollTo(0, document.body.scrollHeight);
 
     }
     if(el.classList.contains("addstr")){
        
         el.parentNode.parentNode.parentNode.insertAdjacentHTML("beforebegin",templet2)
-        window.scrollTo(0, document.body.scrollHeight);
+       // window.scrollTo(0, document.body.scrollHeight);
     }
 
 
