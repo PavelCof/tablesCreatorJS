@@ -11,7 +11,7 @@
     /* background: #ddd; */
     min-height: 40px;
     border-radius: 10px;
-    border-bottom: 1px solid rgba(208, 206, 206, 0.8);
+    /* border-bottom: 1px solid rgba(208, 206, 206, 0.8); */
 }
 .column h1{
     text-align: center;
