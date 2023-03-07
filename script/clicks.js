@@ -23,7 +23,7 @@ document.addEventListener("click",function (e) {
                     <div class="td f3 move ofNotHidden"><div class="moveLeft" >
                     <div class="leftToInp"></div>
                     </div> <input type="text" name="name" value="" autocomplete="off">  </div>
-                    <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
+                    <div class="pluseHeadre"><img  draggable="false" src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
                     <div class="td f3">
                             <select name="ctype" list="columnTypes" class="columnTypes">
                                     <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
@@ -46,7 +46,7 @@ document.addEventListener("click",function (e) {
                     <div class="td f3 move ofNotHidden"><div class="moveLeft" >
                     <div class="leftToInp2"></div>
                     </div> <input type="text" name="name" value="" autocomplete="off">  </div>
-                    <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
+                    <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" draggable="false"  class="pluseH" id="pluseH_${hpluseId}"></div>
                     <div class="td f3">
                             <select name="ctype" list="columnTypes" class="columnTypes">
                                     <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
@@ -75,7 +75,7 @@ document.addEventListener("click",function (e) {
                             </div>
                             <input type="text" name="name" value="" autocomplete="off">  </div>
                         <div class="rollUpHeadre">
-                            <img src="himgs/icorollUp.svg" class="rollUp" id="rollUp_${hpluseId}"></div>
+                            <img src="himgs/icorollUp.svg"  draggable="false" class="rollUp" id="rollUp_${hpluseId}"></div>
                         <div class="td f3"></div>
                         <div class="td f2 minw175 padL7"></div>
                         <div class="td f2"></div>
@@ -129,13 +129,13 @@ document.addEventListener("click",function (e) {
         container.append(div)
 
         initMoves()
-
+        window.scrollTo(0, document.body.scrollHeight);
 
     }
     if(el.classList.contains("addstr")){
-
-        console.log(el.parentNode.parentNode.parentNode);
+       
         el.parentNode.parentNode.parentNode.insertAdjacentHTML("beforebegin",templet2)
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
 
@@ -182,7 +182,7 @@ document.addEventListener("click",function (e) {
                     div.querySelector(".itemButtons").insertAdjacentElement('beforebegin', finalEl);
                     itemBlue.classList.remove("hidden")
                     itemBlue.insertAdjacentElement('beforebegin', div);
-              
+                    itemBlue.classList.add("hidden")
 
                 }
             }else{
@@ -208,6 +208,9 @@ document.addEventListener("click",function (e) {
 
         el.classList.add("rollDown")
         el.classList.remove("rollUp")
+        el.style.transform=`rotate(180deg)`;
+ 
+        //ightBlock.scrollTo(0, rightBlock.scrollHeight);
     }else if(el.classList.contains("rollDown")){
         let elP=document.querySelector("#item_"+el.id.split("_")[1])
         elP.style.height="50px"
@@ -221,7 +224,10 @@ document.addEventListener("click",function (e) {
         }, 200);
         el.classList.add("rollUp")
         el.classList.remove("rollDown")
-      
-
+        el.style.transform=`rotate(0deg)`;
+     
+        
+//ightBlock.scrollTo(0, rightBlock.scrollHeight);
     }
+
 })
