@@ -88,7 +88,7 @@ h1{
     overflow: unset !important;
 }
 
-.moveLeftH{
+ .moveLeftH{
     position: relative;
     width: 15px;
 }
@@ -96,7 +96,7 @@ h1{
     position: relative;
     width: 30px;
 }
-.leftToInpH{
+.column > .item >.column > .item  .leftToInpH{
     position: absolute;
     top: -51px;
     left: 8px;
@@ -105,7 +105,7 @@ h1{
     /* border-left: 1px solid #ccc; */
     border-bottom: solid 1px #ccc;
 }
-.leftToInp{
+.column > .item >.column > .item  .leftToInp{
     position: absolute;
     top: -51px;
     left: 8px;
@@ -114,7 +114,7 @@ h1{
     /* border-left: 1px solid #ccc; */
     border-bottom: solid 1px #ccc;
 }
-.leftToInp2{
+.column > .item >.column > .item  .leftToInp2{
     position: absolute;
     top: -71px;
     left: 8px;
