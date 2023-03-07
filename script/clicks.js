@@ -138,6 +138,7 @@ document.addEventListener("click",function (e) {
         el.parentNode.parentNode.parentNode.insertAdjacentHTML("beforebegin",templet2)
     }
 
+
     if(el.classList.contains("pluseH")){
 
 
@@ -193,5 +194,34 @@ document.addEventListener("click",function (e) {
         // node.insertAdjacentHTML("beforebegin",templetH)
         // node.parentNode.insertAdjacentHTML("beforeend",templetHButton)
          initMoves()
+    }
+    if(el.classList.contains("rollUp")){
+        let elP=document.querySelector("#item_"+el.id.split("_")[1])
+        let elH=elP.offsetHeight-10
+        elP.style.height=elH+"px"
+        elP.querySelector(".absButLine").classList.add("hidden")
+        setTimeout(() => {
+            elP.style.height="50px"
+        }, 100);
+     
+        elP.dataset["elh"]=elH
+
+        el.classList.add("rollDown")
+        el.classList.remove("rollUp")
+    }else if(el.classList.contains("rollDown")){
+        let elP=document.querySelector("#item_"+el.id.split("_")[1])
+        elP.style.height="50px"
+      
+        setTimeout(() => {
+            elP.style.height=elP.dataset["elh"]+"px"
+            elP.querySelector(".absButLine").classList.remove("hidden")
+        }, 100);
+        setTimeout(() => {
+            elP.style.height="unset"
+        }, 200);
+        el.classList.add("rollUp")
+        el.classList.remove("rollDown")
+      
+
     }
 })

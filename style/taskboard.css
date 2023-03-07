@@ -29,8 +29,9 @@
     opacity: 1;
     display:block;
     position: relative;
-    /* background: white; */
+    transition: 1s;
     margin: 0px 3px;
+    overflow: hidden;
 
 }
 .itemButtons{
