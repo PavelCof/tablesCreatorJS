@@ -5,229 +5,240 @@
 //     showLoader()
 
 //     hideLoader()
-// })
+// })/var/www/html/PK/elements/taskboard/index.html
 
 
-function idGenInt(min=5, max=10000000000000) {
-
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
-document.addEventListener("click",function (e) {
-    let el =e.target
-    let hpluseId=idGenInt()
-    let finalEl=""
-    let templet = `
-            <div class="item" draggable="true"  id="item_${hpluseId}" >
-                
-                <div class="itemblock tr " >
-                    <div class="td f3 move ofNotHidden"><div class="moveLeft" >
-                    <div class="leftToInp"></div>
-                    </div> <input type="text" name="name" value="" autocomplete="off">  </div>
-                    <div class="pluseHeadre"><img  draggable="false" src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
-                    <div class="td f3">
-                            <select name="ctype" list="columnTypes" class="columnTypes">
-                                    <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
-                            </select>
-                    </div>
-                    <div class="td f2 minw175 padL7"><button class="bgbutton options" title="Добавьте права для редакторов столбца">Редактировать права</button></div>
-                    <div class="td f2"><button class="bgbutton clonebutton">Дублировать</button> </div>
-                    <div class="td f2 center">
-                            <input type="checkbox" name="required" id="arch_${hpluseId}">
-                    </div>
-                    <div class="td f2 center"></div>
-                    <div class="td f2 jright"><button class="rbutton delString" id="del_${hpluseId}">Удалить</button></div>
-                </div>
-            
-            </div> `
-    let templet2 = `
-            <div class="item" draggable="true"  id="item_${hpluseId}" >
-                
-                <div class="itemblock tr " >
-                    <div class="td f3 move ofNotHidden"><div class="moveLeft" >
-                    <div class="leftToInp2"></div>
-                    </div> <input type="text" name="name" value="" autocomplete="off">  </div>
-                    <div class="pluseHeadre"><img src="himgs/addplusegrey.svg" draggable="false"  class="pluseH" id="pluseH_${hpluseId}"></div>
-                    <div class="td f3">
-                            <select name="ctype" list="columnTypes" class="columnTypes">
-                                    <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
-                            </select>
-                    </div>
-                    <div class="td f2 minw175 padL7"><button class="bgbutton options" title="Добавьте права для редакторов столбца">Редактировать права</button></div>
-                    <div class="td f2"><button class="bgbutton clonebutton">Дублировать</button> </div>
-                    <div class="td f2 center">
-                            <input type="checkbox" name="required" id="arch_${hpluseId}">
-                    </div>
-                    <div class="td f2 center"></div>
-                    <div class="td f2 jright"><button class="rbutton delString"  id="del_${hpluseId}">Удалить</button></div>
-                </div>
-            
-            </div> `
-    let templetH=  `
-           
-                <div class="absLine"></div>
-                <div class="absButLine"></div>
-                <div class="column">           
-                   
-                    <div class="itemblock trH ">
-                        <div class="td f3 move ofNotHidden">
-                            <div class="moveLeftH">
-                                <div class="leftToInpH"></div>
-                            </div>
-                            <input type="text" name="name" value="" autocomplete="off">  </div>
-                        <div class="rollUpHeadre">
-                            <img src="himgs/icorollUp.svg"  draggable="false" class="rollUp" id="rollUp_${hpluseId}"></div>
-                        <div class="td f3"></div>
-                        <div class="td f2 minw175 padL7"></div>
-                        <div class="td f2"></div>
-                        <div class="td f2"></div>
-                        <div class="td f2"></div>
-                        <div class="td f2"></div>
-                    </div> 
-
-                    <div class="itemButtons"   id="new3_${hpluseId}">    
-                        <div class="itemblock tr ">
-                            <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft ">
-                            <div class="leftToBut"></div>
-                            </div> <buttin class="bgbutton addstr">Добавить еще столбец  </buttin></div>
-                            <div class="pluseHeadre"></div>
-                            <div class="td f3"></div>
-                            <div class="td f2 minw175 padL7"></div>
-                            <div class="td f2"></div>
-                            <div class="td f2"></div>
-                            <div class="td f2"></div>
-                            <div class="td f2"></div>
-                        </div> 
-                    </div>
-                </div>
+function stringsLoop(elements) {
+    let q=[]
+    let obj={}
+        elements.forEach(i=>{
+     
+            if(i.classList.contains("column")){
+                let items1=null
+                let row=null
+                row= container.querySelectorAll(`#${i.id} > .trH`)
+                //console.log(row);
+                items1= container.querySelectorAll(`#${i.id} > .item`)
           
-            `
-    let templetHButton=`
-        <div class="itemButtons"   id="new3">    
-                <div class="itemblock tr ">
-                    <div class="td f3  moveNoImg ofNotHidden"><div class="moveLeft ">
-                    <div class="leftToBut"></div>
-                    </div> <buttin class="bgbutton addstr">Добавить еще столбец  </buttin></div>
-                    <div class="pluseHeadre"></div>
-                    <div class="td f3"></div>
-                    <div class="td f2 minw175 padL7"></div>
-                    <div class="td f2"></div>
-                    <div class="td f2"></div>
-                    <div class="td f2"></div>
-                    <div class="td f2"></div>
-                </div> 
-        </div>
-
-    </div>
-    `
-    if(el.id=="addrow"){
-
-
-        let div = document.createElement("div")
-        div.classList.add("column")
-        div.id="column_"+hpluseId
-        div.innerHTML =templet
-        container.append(div)
-
-        initMoves()
-      //  window.scrollTo(0, document.body.scrollHeight);
-
-    }
-    if(el.classList.contains("addstr")){
-       
-        el.parentNode.parentNode.parentNode.insertAdjacentHTML("beforebegin",templet2)
-       // window.scrollTo(0, document.body.scrollHeight);
-    }
-
-
-    if(el.classList.contains("pluseH")){
-
-
-        finalEl=el
-        for (let index = 0; index < 200; index++) {
-            if (finalEl.parentNode) {
-                        finalEl=finalEl.parentNode
-                        
-                        try {
-                            if(finalEl.classList.contains('item')||finalEl.classList.contains('trH')){ // 
+     
+                    if(container.querySelector(`#${i.id} > .trH`)){
+                        console.log(row);
+                        console.log(items1);
+                        items1.forEach(i1=>{
+                         
+                            if(i1.classList.contains("itemString")){
+                                console.log(1);
+                                let itemStr =container.querySelector(`#${i1.id} > .tr`)
+    
+                              
+                                obj=   getStringInputs(itemStr)
+                                q.push(obj)
                                 
-                                break;
+                            }else{
+                                console.log(2);
+                                let items2= container.querySelectorAll(`#${i1.id} > .column`)
+                                obj.uid=i1.id
+                                obj.name="группировка"
+                                obj.ctype="group"
+                                obj.column=stringsLoop(items2)
+                                // q[i1.id]={}
+                                // q[i1.id]=   stringsLoop(items2)\
+                                q.push(obj)
                             }
-                        } catch (error) {
-                            
-                        }
-
-
+    
+    
+                           // let items3= container.querySelectorAll(`#${i.id} > .item`)
+                        })
+                
+                    }else{
+                        console.log(items1);
+                        items1.forEach(i1=>{
+                           
+                            if(i1.classList.contains("itemString")){
+                                let itemStr =container.querySelector(`#${i1.id} > .tr`)
+                                obj=   getStringInputs(itemStr)
+                                q.push(obj)
+                                // q[i1.id]={}
+                                // q[i1.id] = getStringInputs(itemStr)
+                            }else{
+                                let items2= container.querySelectorAll(`#${i1.id} > .column`)
+    
+                               
+                                obj.uid=i1.id
+                                obj.name="группировка"
+                                obj.ctype="group"
+                                obj.column=stringsLoop(items2)
+                              
+                                q.push(obj)
+                                // "uid": 33, //NEW.v.1
+                                // "name": "группировка",
+                                // "ctype": "group",
+                                // "column": [
+                                // q[i1.id] = stringsLoop(items2)
+                            }
+    
+    
+                           // let items3= container.querySelectorAll(`#${i.id} > .item`)
+                        })
                     }
                 
+    
             }
-
-
+    
             
-
-
-            // console.log(div);
-            if(finalEl.parentNode){
-                if (finalEl.parentNode.classList.contains('column')) {
-
-                    if(finalEl.classList.contains('itemButtons')){
-                        finalEl.insertAdjacentElement('beforebegin', itemBlue);
-                    }else{
-                        finalEl.insertAdjacentElement('afterend', itemBlue);
-                    }
-                    let div = document.createElement("div")
-                    div.classList.add("item")
-                    div.draggable = true
-                    div.id=`item_${hpluseId}`
-                    div.innerHTML =templetH
-                    div.querySelector(".itemButtons").insertAdjacentElement('beforebegin', finalEl);
-                    itemBlue.classList.remove("hidden")
-                    itemBlue.insertAdjacentElement('beforebegin', div);
-                    itemBlue.classList.add("hidden")
-
-                }
+        })
+        return q
+    }
+    
+    function getStringInputs(i) {
+        console.log(i);
+        if(i.id!="id"&&i.id!="create_time"&&i.id!="owner"&&i.id!="create_date"){
+            obj ={}
+    
+            obj["uid"] = i.id
+            obj["access"]=[]
+            if(window.columnAccess[i.id]){
+                
+                window.columnAccess[i.id].values.forEach(i7=>{
+                 //   console.log(i7);
+                    obj["access"].push(objUsers[i7]) 
+                })
+    
             }else{
-
+                obj["access"] = [] 
             }
-        // let nodeId=el.id.split("_")[1]
-        // let node=document.querySelector("#item_"+nodeId)
-
-        // node.insertAdjacentHTML("beforebegin",templetH)
-        // node.parentNode.insertAdjacentHTML("beforeend",templetHButton)
-         initMoves()
+    
+           // console.log(window.columnAccess);
+    
+            tablesId=i.id
+                        i.querySelectorAll("input").forEach(i1=>{
+                        try {
+                                if (i1.name=="required") {
+                                    obj[i1.name] = i1.checked
+                                 //   console.log(i1.checked);
+                                    i1.checked==true ? testcheck++ : testcheck
+    
+                                } else if (i1.name=="ctype") {
+                                    i1.value!="" ? testcheck1=1 : testcheck1=0
+                                        obj[i1.name] = window.typesList.filter(a=>a.name==i1.value)[0].type;      
+                                        // console.log(obj[i1.name] );
+                                        if(obj[i1.name]=="enum") {
+                                            obj.list=window.cjlists[i.id]  
+                                        }       
+    
+                                } else{   
+                                    i1.value!="" ? testcheck1=1 : testcheck1=0
+                                    obj[i1.name] = i1.value;
+                                }
+                            } catch (error) {
+                                    
+                            }
+                        })
+                        testcheck5 = 1
+                        i.querySelectorAll("select").forEach(i1=>{
+                            i1.value!="" ? testcheck2=1 : testcheck2=0
+    
+                            obj[i1.name] = i1.value
+                            if(obj[i1.name]=="chain") {
+                                if(!i1.value){
+                                    error= "Не внесены данные для связанных списков"
+                                    errorWin("Не внесены данные для связанных списков","#E89191")
+                                    testcheck5 = 0
+                                }
+                                let iq1=   window.chainListSave.filter(i7=>obj.uid==i7.uid)[0]
+                                if(iq1){
+                                    if(iq1.list_names)  {
+                                        obj.list_names=iq1.list_names
+                                        iq1.list.forEach(lists1=>{
+                                            // console.log(lists1,lists1.uid);
+    
+                                            if(lists1.child.length>0){
+                                                try {
+                                                    lists1.child.forEach(lists2=>{
+                                                        if(lists2.uid[0]=="A"){
+                                                          //  delete lists2.uid
+                                                        }
+                                                    })
+                                                } catch (error) {
+                                                    
+                                                }
+                                                try {
+                                                    if(lists1.uid[0]=="A"){
+                                                      //  delete lists1.uid
+                                                    }
+                                                } catch (error) {
+                                                    
+                                                }
+    
+                                            }else{
+                                                error= "Не внесены данные для связанных списков"
+                                                errorWin("Не внесены данные для связанных списков","#E89191")
+                                                testcheck5 = 0 
+                                            }
+                                        })
+                                        obj.list=iq1.list
+                                    }else{
+                                        error= "Не внесены данные для связанных списков"
+                                        errorWin("Не внесены данные для связанных списков","#E89191")
+                                        testcheck5 = 0
+                                    }
+                                }else{
+                                    error= "Не внесены данные для связанных списков"
+                                    errorWin("Не внесены данные для связанных списков","#E89191")
+                                    testcheck5 = 0
+                                }
+    
+    
+                            }
+                            if(obj[i1.name]=="enum") {
+                                obj1=[]
+                                try {
+                                    window.cjlists[i.id].forEach(element => {
+                                        if(element.is_active==true){
+                                            obj1.push(element.name)
+                                        }
+                                    }); 
+                                } catch (e) {
+                                    testcheck5 =0
+                                    error= "Не внесены данные для выпадающего списка"
+                                    errorWin(" Не внесены данные для выпадающего списка","#E89191")
+                                    return;
+                                }
+    
+                                obj.list=obj1
+                            }   else if(obj[i1.name]=="global"){
+                            
+                                obj.global_list= window.glistSelect[i.id]
+                            if(!obj.global_list){
+                                testcheck5 =0
+                                error= "Не внесены данные для выпадающего списка"
+                                return; 
+                            }
+                        }
+                        })
+                        return obj
+                      //  q.column.push(obj)
+                                                  // obj["uid"]=parseInt(i.id) >0 ? null : i.id 
+        }
     }
-    if(el.classList.contains("rollUp")){
-        let elP=document.querySelector("#item_"+el.id.split("_")[1])
-        let elH=elP.offsetHeight-10
-        elP.style.height=elH+"px"
-        elP.querySelector(".absButLine").classList.add("hidden")
-        setTimeout(() => {
-            elP.style.height="50px"
-        }, 100);
-     
-        elP.dataset["elh"]=elH
 
-        el.classList.add("rollDown")
-        el.classList.remove("rollUp")
-        el.style.transform=`rotate(180deg)`;
- 
-        //ightBlock.scrollTo(0, rightBlock.scrollHeight);
-    }else if(el.classList.contains("rollDown")){
-        let elP=document.querySelector("#item_"+el.id.split("_")[1])
-        elP.style.height="50px"
-      
-        setTimeout(() => {
-            elP.style.height=elP.dataset["elh"]+"px"
-            elP.querySelector(".absButLine").classList.remove("hidden")
-        }, 100);
-        setTimeout(() => {
-            elP.style.height="unset"
-        }, 200);
-        el.classList.add("rollUp")
-        el.classList.remove("rollDown")
-        el.style.transform=`rotate(0deg)`;
-     
-        
-//ightBlock.scrollTo(0, rightBlock.scrollHeight);
-    }
+    document.addEventListener("click",function (e) {
 
-})
+        if(e.target.id=="save"){
+  
+                if(container){
+                    q={}
+                    let cmos=document.querySelectorAll("#container > .column")||null
+                    // let saveObj={}
+                    console.log(cmos);
+                    if(cmos){
+                        q.column  =  stringsLoop(cmos);
+                    }
+                    
+                    console.log(q.column);
+                }
+    
+         
+
+        }
+    })
