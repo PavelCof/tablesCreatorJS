@@ -55,7 +55,7 @@ let rowName=""
                             obj.name=rowName//"группировка"
                             obj.ctype="group"
                             obj.uid=i.id 
-                            console.log(i);
+                       
                             obj["is_active"] = !i.classList.contains("hidden")
                             obj.column=stringsLoopG (i)
                             q=obj

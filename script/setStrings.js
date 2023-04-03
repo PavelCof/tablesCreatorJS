@@ -132,7 +132,7 @@ function renderJSON(data,level=0) {
                     if(i.visible==false){
                         state=false 
 
-                      //  console.log(i,i.visible,state,index);
+ 
                     }
                     chaLens=a.rows.filter(i1=>{
                         if(i1.parentNodes.includes(i.index)&&i1.ctype!="group"&&i1.visible){
@@ -156,7 +156,7 @@ function renderJSON(data,level=0) {
                     
 
                 }
-             //   console.log(i,i.visible,state)
+            
                 if(state){
                     if(i.level==level){
                       
@@ -254,7 +254,7 @@ function renderJSON(data,level=0) {
     
       //отрисовка группирующих столбцов (редактор таблицы)
       function renderGroups(i) {
-        console.log(i);
+     
       let  renstr =`
                      
                                     <div class="item" draggable="true" id="Aitem_C${i.uid}">
@@ -331,7 +331,7 @@ function renderJSON(data,level=0) {
 
         }
         if(this.a.ctype=="global"){
-            console.log(this.a);
+          
             window.glistSelect[this.a.uid]= window.glist.filter(filt=>filt.name == this.a.global_list||"" )[0]||""
              window.glistSelect[this.a.uid]=window.glistSelect[this.a.uid].global_list
              window.cjlists[this.a.uid]=window.glistSelect[this.a.uid]

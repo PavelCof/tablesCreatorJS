@@ -20,7 +20,7 @@ tableStructure=[]
                     q={}
                     let cmos=document.querySelectorAll("#containerRows > .column")||null
                     // let saveObj={}
-                    console.log(cmos);
+                    
                     if(cmos){
                             showLoader("Подготовка данных")
 
@@ -39,7 +39,7 @@ tableStructure=[]
                              itable.innerHTML=theadRender(window.hrows,"h")
                     }
                     
-                    console.log(q.column);
+                   
                 }
     
          
@@ -48,20 +48,20 @@ tableStructure=[]
 
         //удаление строк
         if(el.classList.contains("delString")){
-            console.log(el.parentNode.parentNode.parentNode);
+ 
                         el.parentNode.parentNode.parentNode.remove()
 
                         document.querySelectorAll(".item").forEach(i=>{
-                            console.log(i,"test");
+               
                             if(i.innerHTML.trim()==""){
-                                console.log(i);
+                     
                                     i.remove()
                             }
                         })
                         document.querySelectorAll(".column").forEach(i=>{
-                            console.log(i,"test");
+              
                             if(i.innerHTML.trim()==""){
-                                console.log(i);
+                     
                                     i.remove()
                             }
                         })
@@ -105,7 +105,7 @@ tableStructure=[]
                                             }
                                         })
                                         chaLens=chaLens.length  
-                                        console.log(chaLens);
+                                     
                                         if(chaLens==0){
                 
                                             document.querySelector("#checks_"+parentItem.uid).click()
@@ -182,7 +182,7 @@ tableStructure=[]
                             j.visible=i.checked
                             q.visible_columns.push(j)
                         })
-                        console.log(q);
+                   
                  
 
                     }   

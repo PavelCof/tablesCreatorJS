@@ -154,7 +154,7 @@ document.addEventListener("click",function (e) {
                 
             }
 
-            // console.log(div);
+         
             if(finalEl.parentNode){
                 if (finalEl.parentNode.classList.contains('column')) {
 
@@ -178,16 +178,12 @@ document.addEventListener("click",function (e) {
             }else{
 
             }
-        // let nodeId=el.id.split("_")[1]
-        // let node=document.querySelector("#item_"+nodeId)
-
-        // node.insertAdjacentHTML("beforebegin",templetH)
-        // node.parentNode.insertAdjacentHTML("beforeend",templetHButton)
+ 
          initMoves()
          parking.insertAdjacentElement('beforebegin', itemBlue);
     }
     if(el.classList.contains("rollUp")){
-        console.log(el.id.replace("rollUp_",""));
+     
         let elP=document.querySelector("#Aitem_"+el.id.replace("rollUp_",""))
 
         let elH=elP.offsetHeight-10
@@ -277,31 +273,16 @@ function dragOver(event) {
     }
    if(el.classList.contains("column")){
         try {
-            console.log(1);
+      
             finalEl.appendChild(itemBlue);
             itemBlue.classList.remove("hidden")
           
         } catch (error) {
-            console.log(error);
+         
         }
 
    }else{
-    // if(el.parentNode.classList.contains("td")){
-    //     finalEl= el.parentNode.parentNode.parentNode
-    //     console.log(1);
-    // }else if(el.parentNode.parentNode.classList.contains("td")){
-    //     finalEl= el.parentNode.parentNode.parentNode.parentNode
-    //     console.log(2);
-    // }else if(el.classList.contains("td")){
-    //     finalEl= el.parentNode.parentNode
-    //     console.log(3);
-    // }else if(el.classList.contains("pluseH")){
-    //     finalEl= el.parentNode.parentNode.parentNode
-    //     console.log(5);
-    // }else if(el.classList.contains("item")){
-    //     finalEl= el.parentNode
-    // }
-
+ 
 
         for (let index = 0; index < 200; index++) {
             if (finalEl.parentNode) {
@@ -363,15 +344,14 @@ function dragLeave(event) {
 
 function dragDrop(event) {
         const target = event.target;
-     //   if (target.classList.contains('column')) {
-           // console.log(target);
+ 
             event.preventDefault();
             try {
                 event.target.classList.remove('drag-enter');
                 const draggableElementId = moveElementID//event.dataTransfer.getData('text/plain');
-                console.log(draggableElementId);
+ 
                 const draggableElement = document.getElementById(draggableElementId);
-            // console.log( itemBlue,draggableElementId);
+ 
                 itemBlue.insertAdjacentElement('afterend', draggableElement);
                 draggableElement.classList.remove('dragging');
                 itemBlue.classList.add("hidden")
