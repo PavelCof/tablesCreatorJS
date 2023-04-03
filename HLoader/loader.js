@@ -10,9 +10,9 @@ function showLoader(loadstring=""){
 function hideLoader(params) {
     setTimeout(function () {
         fullscreen.classList.add("opasity0")
-    },3000)
+    },1000)
 
     setTimeout(function () {
         fullscreen.classList.add("hidden")
-    },5000) 
+    },2000) 
 } 
