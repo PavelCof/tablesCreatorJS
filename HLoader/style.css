@@ -1,6 +1,6 @@
 fullscreen{
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0px;
     margin: 0;
     width: 100vw;

@@ -54,6 +54,8 @@ let rowName=""
 
                             obj.name=rowName//"группировка"
                             obj.ctype="group"
+                            obj.uid=i.id 
+                            console.log(i);
                             obj["is_active"] = !i.classList.contains("hidden")
                             obj.column=stringsLoopG (i)
                             q=obj
@@ -105,7 +107,7 @@ function getStringInputs(i) {
             if(i.id[0]=="A"){
                 obj["visible"] = true
             }
-         
+     
             obj["uid"] = i.id
             obj["access"]=[]
             if(window.columnAccess[i.id]){

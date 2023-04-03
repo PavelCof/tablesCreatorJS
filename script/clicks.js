@@ -174,7 +174,7 @@ tableStructure=[]
                 
                 
                         let q = {}
-                        q.session=session.value
+            
                         q.visible_columns =[]
                         itable.querySelectorAll(".checks").forEach(i=>{
                             let j = {}
