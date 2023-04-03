@@ -36,6 +36,7 @@ tableStructure=[]
                              window.hrows.length=0
                              rowsArray(q.column)
                              bigTable.querySelector(".table").innerHTML = theadRender(window.hrows)
+                             itable.innerHTML=theadRender(window.hrows,"h")
                     }
                     
                     console.log(q.column);
@@ -83,4 +84,106 @@ tableStructure=[]
                        
 
                     }
+
+
+                    if(el.classList.contains("checks")){  
+ 
+                        window.checkeds[el.dataset.ids]=el.checked
+                
+                
+                        let rowsH =[]
+                        let colspans=0
+                        window.hrows.rows.forEach(i=>{
+                         
+                            if(i.uid==el.dataset.ids){
+                                i.visible=el.checked
+                                window.hrows.rows.filter(parentItem=>{
+                                    if(parentItem.index==i.parentindex){
+                                      let  chaLens=window.hrows.rows.filter(i1=>{
+                                            if(i1.parentNodes.includes(parentItem.index)&&i1.ctype!="group"&&i1.visible){
+                                                return i1
+                                            }
+                                        })
+                                        chaLens=chaLens.length  
+                                        console.log(chaLens);
+                                        if(chaLens==0){
+                
+                                            document.querySelector("#checks_"+parentItem.uid).click()
+                                          
+                                            parentItem.visible=false
+                                        }else{
+                                            parentItem.visible=true
+                                        }
+                                    }
+                                })
+                                if(i.ctype!="group"){
+                     
+                                    if(el.checked==false){
+                 
+                                          bigTable.querySelectorAll("tbody ."+i.uid).forEach(i=>{
+                                              i.classList.add("hidden")
+                                          })
+                                      }else{
+                 
+                                          bigTable.querySelectorAll("tbody ."+i.uid).forEach(i=>{
+                                              i.classList.remove("hidden")
+                                          })
+                                      }
+                 
+                                } 
+                            }
+                
+                
+                            if(i.parentNodes.includes(el.dataset.index)){
+                                i.visible = el.checked
+                                if(i.visible==false){
+                                    i.disabled=" disabled"
+                                }else{
+                                    i.disabled=""
+                                }
+                                
+                                if(i.ctype!="group"){
+                                    colspans++
+                                    if(el.checked==false){
+               
+                                          bigTable.querySelectorAll("tbody ."+i.uid).forEach(i=>{
+                                              i.classList.add("hidden")
+                                          })
+                                      }else{
+   
+                                          bigTable.querySelectorAll("tbody ."+i.uid).forEach(i=>{
+                                              i.classList.remove("hidden")
+                                          })
+                                      }
+                
+                     
+                                } 
+                               
+                            }
+                
+                
+               
+                        })
+                
+                
+                    
+                           itable.innerHTML  = theadRender(window.hrows,1,el.dataset.ids)
+                            bigTable.querySelector("thead").innerHTML = theadRender(window.hrows)
+                      
+                
+                
+                
+                        let q = {}
+                        q.session=session.value
+                        q.visible_columns =[]
+                        itable.querySelectorAll(".checks").forEach(i=>{
+                            let j = {}
+                            j.uid=i.dataset.ids
+                            j.visible=i.checked
+                            q.visible_columns.push(j)
+                        })
+                        console.log(q);
+                 
+
+                    }   
     })
