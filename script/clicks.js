@@ -48,8 +48,13 @@ tableStructure=[]
 
         //удаление строк
         if(el.classList.contains("delString")){
- 
-                        el.parentNode.parentNode.parentNode.remove()
+                    let delrow =el.parentNode.parentNode.parentNode
+                    if(delrow.classList.contains("item")){
+                        delrow.remove()
+                    }else if(delrow.classList.contains("column")){
+                         delrow.parentNode.remove()
+                    }
+                     //  el.parentNode.parentNode.parentNode.remove()
 
                         document.querySelectorAll(".item").forEach(i=>{
                
