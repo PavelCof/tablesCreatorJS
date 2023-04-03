@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/taskboard.css">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="MoscowLoader/style.css">
+    <link rel="stylesheet" href="HLoader/style.css">
     <link rel="shortcut icon" href="himgs/JKHeaders1.svg" type="image/x-icon">
     <title>КЖ Шапки</title>
 </head>
@@ -15,15 +15,33 @@
     <div class="row" id="Hmenu"> <img src="himgs/JKHeaders1.svg" alt=""> <button id="addrow">Добавить столбец</button><button id="save">Сохранить</button></div>
     <div id="itemBlue" class="hidden"><div class="itemBlue"></div></div>
     <h1 id="h1"> Настройка структуры журнала</h1>
-    <div class="container" id="container" >
+    <div class="containerRows" id="containerRows" >
       
 
 
 
     </div>
+    <div id="parking"></div>
 
- 
+    <div id="bigTable">
+        <div class="table">
+
+        </div>
+    </div>
+
+
+
+    <fullscreen id="fullscreen" class="hidden">
+        <HLoader>
+            <light>Loading</light>
+        </HLoader>
+    </fullscreen>
+    <script src="HLoader/loader.js"></script>
        
+<script src="HLoader/loader.js"></script>
+<script src="script/eWindow.js"></script>
+<script src="script/getStrings.js"></script>
+<script src="script/setStrings.js"></script>
 <script src="script/clicks.js"></script>
 <script src="script/taskboard.js"></script>
 </body>

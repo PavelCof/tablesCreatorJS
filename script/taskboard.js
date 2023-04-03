@@ -7,16 +7,16 @@ document.addEventListener("click",function (e) {
     let hpluseId=idGenInt()
     let finalEl=""
     let templet = `
-            <div class="item" draggable="true"  id="item_${hpluseId}" >
+            <div class="item itemString" draggable="true"  id="Aitem_${hpluseId}" >
                 
-                <div class="itemblock tr " >
+                <div class="itemblock tr " id="A_${hpluseId}"  >
                     <div class="td f3 move ofNotHidden"><div class="moveLeft" >
                     <div class="leftToInp"></div>
                     </div> <input type="text" name="name" value="" autocomplete="off">  </div>
                     <div class="pluseHeadre"><img  draggable="false" src="himgs/addplusegrey.svg" class="pluseH" id="pluseH_${hpluseId}"></div>
                     <div class="td f3">
                             <select name="ctype" list="columnTypes" class="columnTypes">
-                                    <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
+                            <option value=""></option><option value="varchar">Текст</option><option value="int">Число</option><option value="checkbox">Чекбокс</option><option value="enum">Выпадающий список</option><option value="date">Дата</option><option value="time">Время</option><option value="global">Готовый список</option><option value="signature">Подпись</option><option value="chain">Связанный список</option>
                             </select>
                     </div>
                     <div class="td f2 minw175 padL7"><button class="bgbutton options" title="Добавьте права для редакторов столбца">Редактировать права</button></div>
@@ -25,14 +25,14 @@ document.addEventListener("click",function (e) {
                             <input type="checkbox" name="required" id="arch_${hpluseId}">
                     </div>
                     <div class="td f2 center"></div>
-                    <div class="td f2 jright"><button class="rbutton delString" id="del_${hpluseId}">Удалить</button></div>
+                    <div class="td f2 fright"><button class="rbutton delString" id="del_${hpluseId}">Удалить</button></div>
                 </div>
             
             </div> `
     let templet2 = `
-            <div class="item" draggable="true"  id="item_${hpluseId}" >
+            <div class="item itemString" draggable="true"  id="Aitem_${hpluseId}" >
                 
-                <div class="itemblock tr " >
+                <div class="itemblock tr "  id="A_${hpluseId}"  >
                     <div class="td f3 move ofNotHidden"><div class="moveLeft" >
                     <div class="leftToInp2"></div>
                     </div> <input type="text" name="name" value="" autocomplete="off">  </div>
@@ -48,7 +48,7 @@ document.addEventListener("click",function (e) {
                             <input type="checkbox" name="required" id="arch_${hpluseId}">
                     </div>
                     <div class="td f2 center"></div>
-                    <div class="td f2 jright"><button class="rbutton delString"  id="del_${hpluseId}">Удалить</button></div>
+                    <div class="td f2 fright"><button class="rbutton delString"  id="del_${hpluseId}">Удалить</button></div>
                 </div>
             
             </div> `
@@ -57,14 +57,14 @@ document.addEventListener("click",function (e) {
     let templetH=  `
                 <div class="absLine"></div>
                 <div class="absButLine"></div>
-                <div class="column" id="col_${hpluseId}">           
+                <div class="column" id="col_${hpluseId}" >           
                    
                     <div class="itemblock trH ">
                         <div class="td f3 move ofNotHidden">
                             <div class="moveLeftH">
                                 <div class="leftToInpH"></div>
                             </div>
-                            <input type="text" name="name" data-ctype="group" value="" autocomplete="off">  </div>
+                            <input type="text" name="name" class="groupinp col_${hpluseId}" data-ctype="group" value="" autocomplete="off">  </div>
                         <div class="rollUpHeadre">
                             <img src="himgs/icorollUp.svg"  draggable="false" class="rollUp" id="rollUp_${hpluseId}"></div>
                         <div class="td f3"></div>
@@ -72,7 +72,7 @@ document.addEventListener("click",function (e) {
                         <div class="td f2"></div>
                         <div class="td f2"></div>
                         <div class="td f2"></div>
-                        <div class="td f2"></div>
+                        <div class="td f2 fright"><button class="rbutton delString" id="del_${hpluseId}">Удалить</button></div>
                     </div> 
 
                     <div class="itemButtons"   id="new3_${hpluseId}">    
@@ -110,6 +110,9 @@ document.addEventListener("click",function (e) {
 
     </div>
     `
+    if(el.parentNode.id=="addrow"){
+        el.parentNode.click()
+    }
     if(el.id=="addrow"){
 
 
@@ -117,7 +120,7 @@ document.addEventListener("click",function (e) {
         div.classList.add("column")
         div.id="column_"+hpluseId
         div.innerHTML =templet
-        container.append(div)
+        containerRows.append(div)
 
         initMoves()
       //  window.scrollTo(0, document.body.scrollHeight);
@@ -131,7 +134,6 @@ document.addEventListener("click",function (e) {
 
 
     if(el.classList.contains("pluseH")){
-
 
         finalEl=el
         for (let index = 0; index < 200; index++) {
@@ -152,10 +154,6 @@ document.addEventListener("click",function (e) {
                 
             }
 
-
-            
-
-
             // console.log(div);
             if(finalEl.parentNode){
                 if (finalEl.parentNode.classList.contains('column')) {
@@ -167,8 +165,9 @@ document.addEventListener("click",function (e) {
                     }
                     let div = document.createElement("div")
                     div.classList.add("item")
+                   // div.classList.add("itemString")
                     div.draggable = true
-                    div.id=`item_${hpluseId}`
+                    div.id=`Aitem_${hpluseId}`
                     div.innerHTML =templetH
                     div.querySelector(".itemButtons").insertAdjacentElement('beforebegin', finalEl);
                     itemBlue.classList.remove("hidden")
@@ -185,9 +184,12 @@ document.addEventListener("click",function (e) {
         // node.insertAdjacentHTML("beforebegin",templetH)
         // node.parentNode.insertAdjacentHTML("beforeend",templetHButton)
          initMoves()
+         parking.insertAdjacentElement('beforebegin', itemBlue);
     }
     if(el.classList.contains("rollUp")){
-        let elP=document.querySelector("#item_"+el.id.split("_")[1])
+        console.log(el.id.replace("rollUp_",""));
+        let elP=document.querySelector("#Aitem_"+el.id.replace("rollUp_",""))
+
         let elH=elP.offsetHeight-10
         elP.style.height=elH+"px"
         elP.querySelector(".absButLine").classList.add("hidden")
@@ -203,7 +205,7 @@ document.addEventListener("click",function (e) {
  
         //ightBlock.scrollTo(0, rightBlock.scrollHeight);
     }else if(el.classList.contains("rollDown")){
-        let elP=document.querySelector("#item_"+el.id.split("_")[1])
+        let elP=document.querySelector("#Aitem_"+el.id.replace("rollUp_",""))
         elP.style.height="50px"
       
         setTimeout(() => {
@@ -225,19 +227,6 @@ document.addEventListener("click",function (e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //drag and drop
 
 
@@ -255,18 +244,18 @@ function initMoves() {
             elem.addEventListener('dragend', dragEnd);
         });
 
-        const containers = document.querySelectorAll('.column');
-        containers.forEach(container => {
-            container.addEventListener('dragover', dragOver);
+        const columns = document.querySelectorAll('.column');
+        columns.forEach(containerR => {
+            containerR.addEventListener('dragover', dragOver);
         });
 
-        containers.forEach(container => {
-            container.addEventListener('dragenter', dragEnter);
-            container.addEventListener('dragleave', dragLeave);
+        columns.forEach(containerR => {
+            containerR.addEventListener('dragenter', dragEnter);
+            containerR.addEventListener('dragleave', dragLeave);
         });
 
-        containers.forEach(container => {
-            container.addEventListener('drop', dragDrop);
+        columns.forEach(containerR => {
+            containerR.addEventListener('drop', dragDrop);
         });
 }
 function dragStart(event) {
@@ -291,6 +280,7 @@ function dragOver(event) {
             console.log(1);
             finalEl.appendChild(itemBlue);
             itemBlue.classList.remove("hidden")
+          
         } catch (error) {
             console.log(error);
         }
@@ -345,7 +335,7 @@ function dragOver(event) {
                     }
 
                     itemBlue.classList.remove("hidden")
-
+                   // 
                 }
             }else{
 
@@ -385,6 +375,10 @@ function dragDrop(event) {
                 itemBlue.insertAdjacentElement('afterend', draggableElement);
                 draggableElement.classList.remove('dragging');
                 itemBlue.classList.add("hidden")
+                setTimeout(() => {
+                    parking.insertAdjacentElement('beforebegin', itemBlue);
+                }, 100);
+              
             } catch (error) {
                 
             }

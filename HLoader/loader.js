@@ -1,4 +1,6 @@
-function showLoader(){
+function showLoader(loadstring=""){
+    document.querySelector("light").innerHTML=loadstring
+    console.log(document.querySelector("light"));
     fullscreen.classList.remove("hidden")
     setTimeout(function () {
         fullscreen.classList.remove("opasity0")

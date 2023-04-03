@@ -11,8 +11,8 @@ fullscreen{
     z-index: 3000;
     transition: 1s;
 }
-MoscowLoader{
-    background-image: url(./MoscowLoader.svg);
+HLoader{
+    /* background-image: url(./HLoader.svg); */
     display: block;
     position: relative;
     left: 45%;
@@ -25,34 +25,41 @@ MoscowLoader{
 }
 light{
     position: absolute;
-    top: 0;
+    color: white;
+    top: 427px;
     height: 100%;
-    width: 29px;
-    transform: skewX(-45deg);
+    width: 81px;
+    transform: skewX(0deg);
     animation: flareAnimation;
     left: -150%;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.1));
-    animation: MoscowLoad 1s linear infinite;
-    border-radius: 111px;
+    background: linear-gradient(219deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.1));
+    animation: HLoad 10s infinite;
+    border-radius: 381px;
     }
 
-@keyframes MoscowLoad {
+@keyframes HLoad {
 
     0% {
-        top: -35px;
-        left: 10px;
+        top: 15px;
+        left: 49px;
         opacity: 0;
-        height: 3%;
+        height: 86px;
+        width: 86px;
     }
     50% {
         opacity: 1;
-        height: 88px;
+        height: 67px;
+        transform: translateY(10px);
+        background: linear-gradient(219deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.4));
+        width: 67px;
     }
     100% {
-        height: 0%;
-        left: 115px;
+        transform: skewX(0deg);
+        height: 56px;
+        left: 49px;
         opacity: 0;
-        top: 173px;
+        width: 56px;
+        top: 34px;
     }
   }
     *{
