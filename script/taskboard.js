@@ -357,6 +357,21 @@ function dragDrop(event) {
                 itemBlue.classList.add("hidden")
                 setTimeout(() => {
                     parking.insertAdjacentElement('beforebegin', itemBlue);
+
+                    // document.querySelectorAll(".item").forEach(i=>{
+               
+                    //     if(i.innerHTML.trim()==""){
+                 
+                    //             i.remove()
+                    //     }
+                    // })
+                    document.querySelectorAll(".column").forEach(i=>{
+          
+                        if(i.innerHTML.trim()==""){
+                 
+                                i.remove()
+                        }
+                    })
                 }, 100);
               
             } catch (error) {
