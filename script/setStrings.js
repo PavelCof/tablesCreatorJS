@@ -1,73 +1,7 @@
 //формирование массива строк многоуровневой шапки  (журнал)
 let rowheaders = []
 window.checkeds=[]
-function rowsArray(data,level=0,parentindex=0,parentNodes="",uniindex=0,groupvisible=true) {
-    level++
 
-    if(level>window.hrows.levels){
-        window.hrows.levels=level
-       }
-    let tr={}
-    let index=1
-    data.forEach((i)=>{
-        let groupvis=i.visible
-
-        // if(i.visible){
-        //     groupvis=groupvisible
-        // }
-        let td={}
-      //  if(i.visible!=false){
-       
-             td.index=`${level-1}_${index}_${uniindex}`
-
-           parentindex? td.parentindex=parentindex:null
-           if(parentindex){
-            td.parentNodes = `${parentindex} ${parentNodes}`
-           }else{
-            td.parentNodes=""
-           }
-
-           if(groupvisible==false){
-    
-            td.disabled=" disabled"
-           }else{
-      
-            td.disabled=""
-           }
-
-
-            if(i.ctype=="group"){
-                 td.name=i.name
-                 td.visible=groupvis
-                 td.colspan= i.column.length
-                 td.level= level
-                 td.uid =i.uid
-                 td.ctype=i.ctype
-                 uniindex++
-
-                rowsArray(i.column,level,td.index,td.parentNodes,uniindex,i.visible)
-             
-            }else{
-                 td.colspan=0
-                 td.required=i.required
-                 td.uid =i.uid
-                 td.level= level
-                 td.access =i.access
-                 td.visible=groupvis
-                 td.name=i.name
-                 td.ctype=i.ctype
-                 rowheaders.push(i)
-                 window.hrows.length++
-            }
-            window.hrows.rows.push(td)
-
-            index++
-        
-     //   }
-    })
-      //  return tr
-      
-}
 
 
 
@@ -401,7 +335,10 @@ function renderJSON(data,level=0) {
         let index=1
         data.forEach((i)=>{
             let groupvis=i.visible
-    
+            if (groupvis == undefined) {
+                groupvis=groupvisible
+                i.visible=groupvis
+            }
             // if(i.visible){
             //     groupvis=groupvisible
             // }
@@ -418,7 +355,7 @@ function renderJSON(data,level=0) {
                }
     
                if(groupvisible==false){
-        
+                groupvis=false
                 td.disabled=" disabled"
                }else{
           

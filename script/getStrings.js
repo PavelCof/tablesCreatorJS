@@ -76,9 +76,9 @@ let rowName=""
                             let items2= containerRows.querySelectorAll(`#${i1.id} > .column`)
 
                            
-                            if(i1.id[0]!=="A"||i1.id[0]!==""){
-                                obj.uid=i1.id
-                            }
+                            // if(i1.id[0]!=="A"||i1.id[0]!==""){
+                            //     obj.uid=i1.id
+                            // }
                           
                             q.push(stringsLoop(items2))
 
