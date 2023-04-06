@@ -34,7 +34,7 @@ tableStructure=[]
                              window.hrows.levels=0
                        
                              window.hrows.length=0
-                             rowsArray(q.column)
+                             rowsArray1(q.column)
                              bigTable.querySelector(".table").innerHTML = theadRender(window.hrows)
                              itable.innerHTML=theadRender(window.hrows,"h")
                     }
